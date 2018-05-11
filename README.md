@@ -1,6 +1,8 @@
-# vue-my-component
+# vue-move-ball
 
 > A Vue.js project
+
+一个可拖拽的小球 操作停止10s后自动移动到最近的边沿
 
 ## Build Setup
 
