@@ -1,9 +1,9 @@
 <template>
   <div class="ball-container">
-    <div id="ball" class="ball"
+    <div class="ball"
          @mouseenter="mouseEnter()"
          @mousedown="mousedown($event)"
-         @mouseover="mouseover()"
+         @mouseover="mouseover($event)"
          :style="{left:dx + 'px',top:dy + 'px',cursor:cursorStyle}"
     > + </div>
   </div>
@@ -27,7 +27,7 @@
       mousedown: function (event) {
         let e = event || window.event
         let self = this
-        let element = document.getElementById("ball")
+        let element = e.target
         element.classList.remove("transition")
         //e.page 是鼠标距离屏幕左侧的宽度 element.offsetLeft ball距离屏幕左侧的宽度
         let mouseOffsetX = e.pageX - element.offsetLeft //鼠标距ball左侧的宽度
@@ -85,8 +85,9 @@
           this.edgeDirection = "bottom"
         }
       },
-      mouseover:function(){
-        let element = document.getElementById("ball")
+      mouseover:function(event){
+        let e = event || window.event
+        let element = e.target
         if(element.classList.contains("transition")){
           switch(this.edgeDirection){
             case "left":
